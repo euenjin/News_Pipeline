@@ -1,89 +1,89 @@
 # Quick Start Guide
 
-## 🚀 Get Up and Running in 5 Minutes
+## Get Up and Running in 5 Minutes
 
-### Step 1: Get an API Key (2 minutes)
+### Step 1: Get an API Key
 
 1. Go to https://newsapi.org/
-2. Sign up for a free account
+2. Sign up for an account
 3. Copy your API key
 
-### Step 2: Configure the Project (1 minute)
+### Step 2: Configure the Project
 
-1. Create `.env` file:
-   ```bash
-   copy .env.example .env  # Windows
-   cp .env.example .env    # Linux/Mac
-   ```
+Create or update `.env`:
 
-2. Edit `.env` and paste your API key:
-   ```
-   NEWS_API_KEY=your_api_key_here
-   ```
+```bash
+copy .env.example .env
+```
 
-### Step 3: Install Dependencies (1 minute)
+Then set:
+
+```text
+NEWS_API_KEY=your_api_key_here
+```
+
+### Step 3: Install Dependencies
 
 ```bash
 python -m venv venv
-venv\Scripts\activate  # Windows: venv\Scripts\activate.bat
-
+venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-### Step 4: Test the Setup (30 seconds)
+### Step 4: Test the Setup
 
 ```bash
 python test_setup.py
 ```
 
-### Step 5: Start the Agent (1 minute)
+### Step 5: Start the Pipeline
 
-**Windows:**
 ```bash
 run_agent.bat
 ```
 
-**Linux/Mac:**
-```bash
-bash run_agent.sh
-```
+## What Happens Next?
 
-## ✅ What happens next?
+- The pipeline waits for the configured weekday schedule.
+- At the scheduled time, it fetches current public health and clinical research news.
+- The digest is saved to `news_archive/`.
+- Activities are logged to `public_health_news_agent.log`.
 
-- The agent will run and wait for 8 AM (Monday-Friday)
-- At 8 AM, it will automatically fetch the latest financial news
-- News will be saved to `news_archive/` folder
-- All activities logged to `news_agent.log`
+Note: The digest supports public health monitoring and research awareness only. It is not for medical decision-making.
 
-## 🧪 Want to test immediately?
+## Test Immediately
 
 ```bash
 python manual_fetch.py
 ```
 
-This will fetch news right now and save it to the archive.
+This fetches a public health news digest immediately and saves it to the archive.
 
-## 📁 Files Overview
+## Files Overview
 
 | File | Purpose |
 |------|---------|
-| `news_scheduler.py` | Main scheduler that runs the agent |
-| `news_fetcher.py` | Fetches news from the API |
-| `news_agent.log` | Log file (auto-created) |
-| `news_archive/` | Folder where news is saved (auto-created) |
+| `news_scheduler.py` | Scheduler that runs the pipeline |
+| `news_fetcher.py` | Fetches, formats, saves, and emails news |
+| `public_health_news_agent.log` | Log file, auto-created |
+| `news_archive/` | Saved public health news digests |
 
-## 🆘 Troubleshooting
+## Troubleshooting
 
-**Issue: "NEWS_API_KEY not configured"**
-- Make sure `.env` exists and has your API key
+**Issue: `NEWS_API_KEY` not configured**
 
-**Issue: "No module named 'apscheduler'"**
-- Run: `pip install -r requirements.txt`
+Make sure `.env` exists and has your API key.
+
+**Issue: `No module named 'apscheduler'`**
+
+Run:
+
+```bash
+pip install -r requirements.txt
+```
 
 **Issue: Empty news results**
-- Check if your API key is valid on newsapi.org
-- Check your API request quota (free tier: 100/day)
 
-## 📚 More Information
+Check that your API key is valid and that your NewsAPI quota has requests remaining.
 
-See [README.md](README.md) for detailed documentation and advanced configuration options.
+See [README.md](README.md) for detailed documentation.

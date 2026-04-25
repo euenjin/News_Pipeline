@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# Financial News Agent Launcher for Linux/Mac
+# Public Health News Pipeline Launcher for Linux/Mac
 
 echo ""
 echo "============================================================"
-echo "Financial News Agent - Launcher"
+echo "Public Health News Pipeline - Launcher"
 echo "============================================================"
 echo ""
 
@@ -26,8 +26,8 @@ if [ ! -f ".env" ]; then
 fi
 
 # Run the news scheduler
-echo "Starting Financial News Agent..."
-echo "Logs will be saved to news_agent.log"
+echo "Starting Public Health News Pipeline..."
+echo "Logs will be saved to public_health_news_agent.log"
 echo "Press Ctrl+C to stop the agent"
 echo ""
 

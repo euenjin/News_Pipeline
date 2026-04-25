@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 def test_setup():
     """Test if all components are properly configured"""
     print("=" * 60)
-    print("Financial News Agent - Setup Test")
+    print("Public Health News Pipeline - Setup Test")
     print("=" * 60)
     
     # Test 1: Check if .env file exists
@@ -57,8 +57,8 @@ def test_setup():
     # Test 4: Test API connection
     print("\n4. Testing API connection...")
     try:
-        from news_fetcher import FinancialNewsFetcher
-        fetcher = FinancialNewsFetcher(api_key=api_key)
+        from news_fetcher import PublicHealthNewsFetcher
+        fetcher = PublicHealthNewsFetcher(api_key=api_key)
         articles = fetcher.fetch_news()
         if articles:
             print(f"   ✓ Successfully fetched {len(articles)} articles")
@@ -73,8 +73,8 @@ def test_setup():
     # Test 5: Test scheduler
     print("\n5. Testing scheduler configuration...")
     try:
-        from news_scheduler import FinancialNewsScheduler
-        scheduler = FinancialNewsScheduler()
+        from news_scheduler import PublicHealthNewsScheduler
+        scheduler = PublicHealthNewsScheduler()
         scheduler.schedule_daily_extraction(hour=8, minute=0)
         jobs = scheduler.get_jobs()
         if jobs:

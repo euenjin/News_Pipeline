@@ -1,9 +1,9 @@
 @echo off
-REM News Agent Daily Runner - Runs from 7:59 AM to ~8:02 AM
+REM Public Health News Pipeline Daily Runner - Runs from 7:59 AM to ~8:02 AM
 REM Use Windows Task Scheduler to run this at 7:59 AM daily
 
-echo Starting News Agent for daily news extraction...
+echo Starting Public Health News Pipeline for daily extraction...
 cd /d "%~dp0"
 python news_scheduler.py
-echo News Agent completed for today.
+echo Public Health News Pipeline completed for today.
 pause

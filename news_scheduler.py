@@ -1,21 +1,22 @@
+import os
 import logging
 from apscheduler.schedulers.background import BackgroundScheduler
 from apscheduler.triggers.cron import CronTrigger
-from news_fetcher import extract_daily_news, FinancialNewsFetcher
+from news_fetcher import extract_daily_news
 
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler('news_agent.log'),
+        logging.FileHandler('public_health_news_agent.log'),
         logging.StreamHandler()
     ]
 )
 logger = logging.getLogger(__name__)
 
 
-class FinancialNewsScheduler:
-    """Schedules financial news extraction"""
+class PublicHealthNewsScheduler:
+    """Schedules public health news extraction"""
     
     def __init__(self):
         self.scheduler = BackgroundScheduler()
@@ -39,8 +40,8 @@ class FinancialNewsScheduler:
         job = self.scheduler.add_job(
             func=self._execute_extraction,
             trigger=trigger,
-            id='daily_financial_news',
-            name='Extract Daily Financial News',
+            id='daily_public_health_news',
+            name='Extract Daily Public Health News',
             replace_existing=True
         )
         
@@ -51,10 +52,10 @@ class FinancialNewsScheduler:
     def _execute_extraction(self):
         """Execute the news extraction"""
         try:
-            logger.info("Starting financial news extraction...")
+            logger.info("Starting public health news extraction...")
             send_email = os.getenv('SEND_EMAIL', 'false').lower() == 'true'
             news_content = extract_daily_news(save_to_file=True, send_email=send_email)
-            logger.info("Financial news extraction completed successfully")
+            logger.info("Public health news extraction completed successfully")
             if send_email:
                 logger.info("News email sent to configured recipient")
             logger.info(f"\n{news_content}")
@@ -98,7 +99,7 @@ def main():
         return
     
     # Create scheduler
-    scheduler = FinancialNewsScheduler()
+    scheduler = PublicHealthNewsScheduler()
     
     # Get schedule time from environment or default to 8:00 AM
     schedule_hour = int(os.getenv('SCHEDULE_HOUR', '8'))

@@ -1,16 +1,16 @@
 #!/usr/bin/env python
 """
 Manual news extraction script - useful for testing
-Run this to fetch and display financial news immediately
+Run this to fetch and display public health news immediately
 """
 
 import os
 import sys
 from dotenv import load_dotenv
-from news_fetcher import extract_daily_news, FinancialNewsFetcher
+from news_fetcher import extract_daily_news
 
 def main():
-    """Manually extract and display financial news"""
+    """Manually extract and display public health news"""
     
     # Load environment variables
     load_dotenv()
@@ -22,7 +22,7 @@ def main():
         print("Please update your .env file with a valid API key from https://newsapi.org/")
         sys.exit(1)
     
-    print("Fetching financial news...")
+    print("Fetching public health news...")
     print("-" * 80)
     
     try:

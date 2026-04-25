@@ -33,7 +33,7 @@ def test_email():
     # Test email send
     try:
         from news_fetcher import send_news_email
-        test_content = "This is a test email from Financial News Agent.\n\nIf you receive this, email functionality is working!"
+        test_content = "This is a test email from Public Health News Pipeline.\n\nIf you receive this, email functionality is working!"
         result = send_news_email(test_content, recipient_email)
 
         if result:
